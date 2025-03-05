@@ -10,7 +10,7 @@ import { toast } from "sonner";
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+//import { Checkbox } from "@/components/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -40,63 +40,83 @@ export function getColumns({
   setRowAction,
 }: GetColumnsProps): ColumnDef<Task>[] {
   return [
-    {
-      id: "select",
-      header: ({ table }) => (
-        <Checkbox
-          checked={
-            table.getIsAllPageRowsSelected() ||
-            (table.getIsSomePageRowsSelected() && "indeterminate")
-          }
-          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-          aria-label="Select all"
-          className="translate-y-0.5"
-        />
-      ),
-      cell: ({ row }) => (
-        <Checkbox
-          checked={row.getIsSelected()}
-          onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
-          className="translate-y-0.5"
-        />
-      ),
-      enableSorting: false,
-      enableHiding: false,
-    },
+    // {
+    //   id: "select",
+    //   header: ({ table }) => (
+    //     <Checkbox
+    //       checked={
+    //         table.getIsAllPageRowsSelected() ||
+    //         (table.getIsSomePageRowsSelected() && "indeterminate")
+    //       }
+    //       onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+    //       aria-label="Select all"
+    //       className="translate-y-0.5"
+    //     />
+    //   ),
+    //   cell: ({ row }) => (
+    //     <Checkbox
+    //       checked={row.getIsSelected()}
+    //       onCheckedChange={(value) => row.toggleSelected(!!value)}
+    //       aria-label="Select row"
+    //       className="translate-y-0.5"
+    //     />
+    //   ),
+    //   enableSorting: false,
+    //   enableHiding: false,
+    // },
     {
       accessorKey: "code",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Task" />
+        <div className="w-full flex-col border-r border-zinc-800">
+          <DataTableColumnHeader column={column} title="Descrição" />
+        </div>
       ),
       cell: ({ row }) => <div className="w-20">{row.getValue("code")}</div>,
       enableSorting: false,
       enableHiding: false,
     },
     {
-      accessorKey: "title",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Title" />
-      ),
-      cell: ({ row }) => {
-        const label = tasks.label.enumValues.find(
-          (label) => label === row.original.label,
-        );
+  accessorKey: "title",
+  header: ({ column }) => (
+    <div className="flex flex-col items-center justify-center border-r border-zinc-800">
+      {/* Cabeçalho principal */}
+      <span className="text-gray-400 text-sm font-medium pb-1">
+        Anhanguera
+      </span>
+      {/* Linha separadora horizontal */}
+      <div className="w-full border-b border-zinc-800"></div>
+      {/* Subcabeçalho com ordenação */}
+      <DataTableColumnHeader column={column} title="Realizados" />
+    </div>
+  ),
+  cell: ({ row }) => {
+    const label = tasks.label.enumValues.find(
+      (label) => label === row.original.label,
+    );
 
-        return (
-          <div className="flex space-x-2">
-            {label && <Badge variant="outline">{label}</Badge>}
-            <span className="max-w-[31.25rem] truncate font-medium">
-              {row.getValue("title")}
-            </span>
-          </div>
-        );
-      },
-    },
+    return (
+      <div className="flex space-x-2 border-r border-gray-300 px-2">
+        {label && <Badge variant="outline">{label}</Badge>}
+        <span className="max-w-[31.25rem] truncate font-medium">
+          {row.getValue("title")}
+        </span>
+      </div>
+    );
+  },
+},    
     {
       accessorKey: "status",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Status" />
+        <div className="flex flex-col items-center justify-ceter border-r border-zinc-800">
+           {/* Cabeçalho principal */}
+          <span className="text-gray-400 text-sm font-medium pb-1"> 
+          Jales
+          </span> 
+           {/* Linha separadora horizontal */}
+          <div className="w-full border-b border-zinc-800"></div>
+          {/* Subcabeçalho com ordenação */}
+        <DataTableColumnHeader column={column} title="Realizados" />
+        </div>
       ),
       cell: ({ row }) => {
         const status = tasks.status.enumValues.find(
@@ -108,7 +128,7 @@ export function getColumns({
         const Icon = getStatusIcon(status);
 
         return (
-          <div className="flex w-[6.25rem] items-center">
+          <div className="flex space-x-2 border-r">
             <Icon
               className="mr-2 size-4 text-muted-foreground"
               aria-hidden="true"
@@ -124,7 +144,16 @@ export function getColumns({
     {
       accessorKey: "priority",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Priority" />
+        <div className="flex flex-col items-center justify-ceter border-r border-zinc-800">
+        {/* Cabeçalho principal */}
+       <span className="text-gray-400 text-sm font-medium pb-1"> 
+       Ceasa
+       </span> 
+        {/* Linha separadora horizontal */}
+       <div className="w-full border-b border-zinc-800"></div>
+       {/* Subcabeçalho com ordenação */}
+     <DataTableColumnHeader column={column} title="Realizados" />
+     </div>
       ),
       cell: ({ row }) => {
         const priority = tasks.priority.enumValues.find(
@@ -152,7 +181,16 @@ export function getColumns({
     {
       accessorKey: "archived",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Archived" />
+        <div className="flex flex-col items-center justify-ceter border-r border-zinc-800">
+        {/* Cabeçalho principal */}
+       <span className="text-gray-400 text-sm font-medium pb-1"> 
+       Bauru
+       </span> 
+        {/* Linha separadora horizontal */}
+       <div className="w-full border-b box-border border-zinc-800"></div>
+       {/* Subcabeçalho com ordenação */}
+     <DataTableColumnHeader column={column} title="Realizados" />
+     </div>
       ),
       cell: ({ row }) => (
         <Badge variant="outline">{row.original.archived ? "Yes" : "No"}</Badge>
@@ -161,7 +199,32 @@ export function getColumns({
     {
       accessorKey: "createdAt",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Created At" />
+        <div className="flex flex-col items-center justify-ceter border-r border-zinc-800">
+        {/* Cabeçalho principal */}
+       <span className="text-gray-400 text-sm font-medium pb-1"> 
+       Mauá
+       </span> 
+        {/* Linha separadora horizontal */}
+       <div className="w-full border-b border-zinc-800"></div>
+       {/* Subcabeçalho com ordenação */}
+     <DataTableColumnHeader column={column} title="Realizados" />
+     </div>
+      ),
+      cell: ({ cell }) => formatDate(cell.getValue() as Date),
+    },
+    {
+      accessorKey: "benassi",
+      header: ({ column }) => (
+        <div className="flex flex-col items-center justify-ceter border-r border-zinc-800">
+        {/* Cabeçalho principal */}
+       <span className="text-gray-400 text-sm font-medium pb-1"> 
+       Benassi
+       </span> 
+        {/* Linha separadora horizontal */}
+       <div className="w-full border-b border-zinc-800"></div>
+       {/* Subcabeçalho com ordenação */}
+     <DataTableColumnHeader column={column} title="Realizados" />
+     </div>
       ),
       cell: ({ cell }) => formatDate(cell.getValue() as Date),
     },
