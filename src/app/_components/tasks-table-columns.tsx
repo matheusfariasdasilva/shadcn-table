@@ -84,13 +84,9 @@ export function getColumns({
         Anhanguera
       </span>
       {/* Linha separadora horizontal */}
-      <div className="items-center w-full border-b border-zinc-800"></div>
+      <div className="w-full border-b border-zinc-800"></div>
       {/* Subcabeçalho com ordenação */}
-      <div className="flex flex-row items-center justify-center border-r border-zinc-800">
       <DataTableColumnHeader column={column} title="Realizados" />
-      <DataTableColumnHeader column={column} title="Realizados" />
-      </div>
-
     </div>
   ),
   cell: ({ row }) => {
@@ -119,10 +115,7 @@ export function getColumns({
            {/* Linha separadora horizontal */}
           <div className="w-full border-b border-zinc-800"></div>
           {/* Subcabeçalho com ordenação */}
-          <div className="flex flex-row items-center justify-center border-r border-zinc-800">
-      <DataTableColumnHeader column={column} title="Realizados" />
-      <DataTableColumnHeader column={column} title="Realizados" />
-      </div>
+        <DataTableColumnHeader column={column} title="Realizados" />
         </div>
       ),
       cell: ({ row }) => {
@@ -159,10 +152,7 @@ export function getColumns({
         {/* Linha separadora horizontal */}
        <div className="w-full border-b border-zinc-800"></div>
        {/* Subcabeçalho com ordenação */}
-       <div className="flex flex-row items-center justify-center border-r border-zinc-800">
-      <DataTableColumnHeader column={column} title="Realizados" />
-      <DataTableColumnHeader column={column} title="Realizados" />
-      </div>
+     <DataTableColumnHeader column={column} title="Realizados" />
      </div>
       ),
       cell: ({ row }) => {
@@ -199,10 +189,7 @@ export function getColumns({
         {/* Linha separadora horizontal */}
        <div className="w-full border-b box-border border-zinc-800"></div>
        {/* Subcabeçalho com ordenação */}
-          <div className="flex flex-row items-center justify-center border-r border-zinc-800">
-      <DataTableColumnHeader column={column} title="Realizados" />
-      <DataTableColumnHeader column={column} title="Realizados" />
-      </div>
+     <DataTableColumnHeader column={column} title="Realizados" />
      </div>
       ),
       cell: ({ row }) => (
@@ -220,10 +207,7 @@ export function getColumns({
         {/* Linha separadora horizontal */}
        <div className="w-full border-b border-zinc-800"></div>
        {/* Subcabeçalho com ordenação */}
-       <div className="flex flex-row items-center justify-center border-r border-zinc-800">
-      <DataTableColumnHeader column={column} title="Realizados" />
-      <DataTableColumnHeader column={column} title="Realizados" />
-      </div>
+     <DataTableColumnHeader column={column} title="Realizados" />
      </div>
       ),
       cell: ({ cell }) => formatDate(cell.getValue() as Date),
@@ -239,10 +223,7 @@ export function getColumns({
         {/* Linha separadora horizontal */}
        <div className="w-full border-b border-zinc-800"></div>
        {/* Subcabeçalho com ordenação */}
-       <div className="flex flex-row items-center justify-center border-r border-zinc-800">
-      <DataTableColumnHeader column={column} title="Realizados" />
-      <DataTableColumnHeader column={column} title="Realizados" />
-      </div>
+     <DataTableColumnHeader column={column} title="Realizados" />
      </div>
       ),
       cell: ({ cell }) => formatDate(cell.getValue() as Date),

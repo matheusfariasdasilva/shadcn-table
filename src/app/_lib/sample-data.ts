@@ -3,8 +3,8 @@ import { type Task } from "@/db/schema";
 export const sampleTasks: Task[] = [
     {
         id: "task_1",
-        code: "13.8M",
-        title: "13.8M",
+        code: "ANH001",
+        title: "Entrega de Tomates - 500kg",
         status: "done",
         priority: "high",
         label: "documentation",
@@ -14,8 +14,8 @@ export const sampleTasks: Task[] = [
     },
     {
         id: "task_2",
-        code: "13.8M",
-        title: "13.8M",
+        code: "JAL002",
+        title: "Distribuição Cenouras - 300kg",
         status: "in-progress",
         priority: "medium",
         label: "feature",
@@ -25,8 +25,8 @@ export const sampleTasks: Task[] = [
     },
     {
         id: "task_3",
-        code: "13.8M",
-        title: "13.8M",
+        code: "CEA003",
+        title: "Carga de Batatas - 1000kg",
         status: "todo",
         priority: "low",
         label: "bug",
@@ -36,8 +36,8 @@ export const sampleTasks: Task[] = [
     },
     {
         id: "task_4",
-        code: "13.8M",
-        title: "13.8M",
+        code: "BAU004",
+        title: "Entrega de Cebolas - 200kg",
         status: "canceled",
         priority: "high",
         label: "enhancement",
@@ -47,8 +47,8 @@ export const sampleTasks: Task[] = [
     },
     {
         id: "task_5",
-        code: "13.8M",
-        title: "13.8M",
+        code: "MAU005",
+        title: "Distribuição Alface - 100kg",
         status: "done",
         priority: "medium",
         label: "documentation",
