@@ -9,31 +9,37 @@ import { getValidFilters } from "@/lib/data-table";
 
 import { FeatureFlagsProvider } from "./_components/feature-flags-provider";
 import { TasksTable } from "./_components/tasks-table";
-import {
-  getTaskPriorityCounts,
-  getTaskStatusCounts,
-  getTasks,
-} from "./_lib/queries";
-import { searchParamsCache } from "./_lib/validations";
+import { sampleTasks } from "./_lib/sample-data";
 
 interface IndexPageProps {
-  searchParams: Promise<SearchParams>;
+  searchParams: SearchParams;
 }
 
-export default async function IndexPage(props: IndexPageProps) {
-  const searchParams = await props.searchParams;
-  const search = searchParamsCache.parse(searchParams);
+export default function IndexPage({ searchParams }: IndexPageProps) {
+  // Simular os dados e contagens
+  const mockData = {
+    data: sampleTasks,
+    pageCount: 1
+  };
 
-  const validFilters = getValidFilters(search.filters);
+  const mockStatusCounts = {
+    "todo": 1,
+    "in-progress": 1,
+    "done": 2,
+    "canceled": 1
+  };
 
-  const promises = Promise.all([
-    getTasks({
-      ...search,
-      filters: validFilters,
-    }),
-    getTaskStatusCounts(),
-    getTaskPriorityCounts(),
-  ]);
+  const mockPriorityCounts = {
+    "low": 1,
+    "medium": 2,
+    "high": 2
+  };
+
+  const promises: Promise<[
+    typeof mockData,
+    typeof mockStatusCounts,
+    typeof mockPriorityCounts
+  ]> = Promise.resolve([mockData, mockStatusCounts, mockPriorityCounts]);
 
   return (
     <Shell className="gap-2">

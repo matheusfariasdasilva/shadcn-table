@@ -6,15 +6,32 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatDate(
-  date: Date | string | number,
+  date: Date | string | number | null | undefined,
   opts: Intl.DateTimeFormatOptions = {},
 ) {
-  return new Intl.DateTimeFormat("en-US", {
-    month: opts.month ?? "long",
-    day: opts.day ?? "numeric",
-    year: opts.year ?? "numeric",
-    ...opts,
-  }).format(new Date(date));
+  // Verificar se o valor da data é válido
+  if (date === null || date === undefined) {
+    return "N/A"; // ou qualquer valor padrão que preferir
+  }
+  
+  try {
+    const dateObj = new Date(date);
+    
+    // Verificar se a data é válida (não é NaN)
+    if (isNaN(dateObj.getTime())) {
+      return "Data Inválida";
+    }
+    
+    return new Intl.DateTimeFormat("en-US", {
+      month: opts.month ?? "long",
+      day: opts.day ?? "numeric",
+      year: opts.year ?? "numeric",
+      ...opts,
+    }).format(dateObj);
+  } catch (error) {
+    console.error("Erro ao formatar data:", error);
+    return "Erro na Data";
+  }
 }
 
 export function toSentenceCase(str: string) {
@@ -37,7 +54,6 @@ export function composeEventHandlers<E>(
 ) {
   return function handleEvent(event: E) {
     originalEventHandler?.(event);
-
     if (
       checkForDefaultPrevented === false ||
       !(event as unknown as Event).defaultPrevented
