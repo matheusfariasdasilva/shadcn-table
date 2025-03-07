@@ -76,51 +76,55 @@ export function getColumns({
       enableHiding: false,
     },
     {
-  accessorKey: "title",
-  header: ({ column }) => (
-    <div className="flex flex-col items-center justify-center border-r border-zinc-800">
-      {/* Cabeçalho principal */}
-      <span className="text-gray-400 text-sm font-medium pb-1">
-        Anhanguera
-      </span>
-      {/* Linha separadora horizontal */}
-      <div className="w-full border-b border-zinc-800"></div>
-      {/* Subcabeçalho com ordenação */}
-      <DataTableColumnHeader column={column} title="Realizados" />
-    </div>
-  ),
-  cell: ({ row }) => {
-    const label = tasks.label.enumValues.find(
-      (label) => label === row.original.label,
-    );
+      accessorKey: "title",
+      header: ({ column }) => (
+        <div className="flex flex-col items-center justify-center border-r border-zinc-800">
+          {/* Cabeçalho principal */}
+          <span className="text-gray-400 text-sm font-medium pb-1">
+            Anhanguera
+          </span>
+          {/* Linha separadora horizontal */}
+          <div className="w-full border-b border-zinc-800"></div>
+          {/* Subscabeçalhos com ordenação */}
+          <div className="w-row flex gap-2">
+          <DataTableColumnHeader column={column} title="Necessário" />
+          <DataTableColumnHeader column={column} title="Realizado" />
+          </div>
+        </div>
+      ),
+      cell: ({ row }) => {
+        const label = tasks.label.enumValues.find(
+          (label) => label === row.original.label
+        );
 
-    return (
-      <div className="flex space-x-2 border-r border-gray-300 px-2">
-        {label && <Badge variant="outline">{label}</Badge>}
-        <span className="max-w-[31.25rem] truncate font-medium">
-          {row.getValue("title")}
-        </span>
-      </div>
-    );
-  },
-},    
+        return (
+          <div className="flex space-x-2 border-r border-gray-300 px-2">
+            {label && <Badge variant="outline">{label}</Badge>}
+            <span className="max-w-[31.25rem] truncate font-medium">
+              {row.getValue("title")}
+            </span>
+          </div>
+        );
+      },
+    },
     {
       accessorKey: "status",
       header: ({ column }) => (
         <div className="flex flex-col items-center justify-ceter border-r border-zinc-800">
-           {/* Cabeçalho principal */}
-          <span className="text-gray-400 text-sm font-medium pb-1"> 
-          Jales
-          </span> 
-           {/* Linha separadora horizontal */}
+          {/* Cabeçalho principal */}
+          <span className="text-gray-400 text-sm font-medium pb-1">Jales</span>
+          {/* Linha separadora horizontal */}
           <div className="w-full border-b border-zinc-800"></div>
           {/* Subcabeçalho com ordenação */}
-        <DataTableColumnHeader column={column} title="Realizados" />
+          <div className="w-row flex gap-2">
+          <DataTableColumnHeader column={column} title="Necessário" />
+          <DataTableColumnHeader column={column} title="Realizado" />
+          </div>
         </div>
       ),
       cell: ({ row }) => {
         const status = tasks.status.enumValues.find(
-          (status) => status === row.original.status,
+          (status) => status === row.original.status
         );
 
         if (!status) return null;
@@ -145,19 +149,20 @@ export function getColumns({
       accessorKey: "priority",
       header: ({ column }) => (
         <div className="flex flex-col items-center justify-ceter border-r border-zinc-800">
-        {/* Cabeçalho principal */}
-       <span className="text-gray-400 text-sm font-medium pb-1"> 
-       Ceasa
-       </span> 
-        {/* Linha separadora horizontal */}
-       <div className="w-full border-b border-zinc-800"></div>
-       {/* Subcabeçalho com ordenação */}
-     <DataTableColumnHeader column={column} title="Realizados" />
-     </div>
+          {/* Cabeçalho principal */}
+          <span className="text-gray-400 text-sm font-medium pb-1">Ceasa</span>
+          {/* Linha separadora horizontal */}
+          <div className="w-full border-b border-zinc-800"></div>
+          {/* Subcabeçalho com ordenação */}
+          <div className="w-row flex gap-2">
+          <DataTableColumnHeader column={column} title="Necessário" />
+          <DataTableColumnHeader column={column} title="Realizado" />
+          </div>
+        </div>
       ),
       cell: ({ row }) => {
         const priority = tasks.priority.enumValues.find(
-          (priority) => priority === row.original.priority,
+          (priority) => priority === row.original.priority
         );
 
         if (!priority) return null;
@@ -182,15 +187,17 @@ export function getColumns({
       accessorKey: "archived",
       header: ({ column }) => (
         <div className="flex flex-col items-center justify-ceter border-r border-zinc-800">
-        {/* Cabeçalho principal */}
-       <span className="text-gray-400 text-sm font-medium pb-1"> 
-       Bauru
-       </span> 
-        {/* Linha separadora horizontal */}
-       <div className="w-full border-b box-border border-zinc-800"></div>
-       {/* Subcabeçalho com ordenação */}
-     <DataTableColumnHeader column={column} title="Realizados" />
-     </div>
+          {/* Cabeçalho principal */}
+          <span className="text-gray-400 text-sm font-medium pb-1">Bauru</span>
+          {/* Linha separadora horizontal */}
+          <div className="w-full border-b box-border border-zinc-800"></div>
+          {/* Subcabeçalho com ordenação */}
+          <div className="w-row flex gap-2">
+          <DataTableColumnHeader column={column} title="Necessário" />
+          <DataTableColumnHeader column={column} title="Realizado" />
+          </div>
+          
+        </div>
       ),
       cell: ({ row }) => (
         <Badge variant="outline">{row.original.archived ? "Yes" : "No"}</Badge>
@@ -200,15 +207,16 @@ export function getColumns({
       accessorKey: "createdAt",
       header: ({ column }) => (
         <div className="flex flex-col items-center justify-ceter border-r border-zinc-800">
-        {/* Cabeçalho principal */}
-       <span className="text-gray-400 text-sm font-medium pb-1"> 
-       Mauá
-       </span> 
-        {/* Linha separadora horizontal */}
-       <div className="w-full border-b border-zinc-800"></div>
-       {/* Subcabeçalho com ordenação */}
-     <DataTableColumnHeader column={column} title="Realizados" />
-     </div>
+          {/* Cabeçalho principal */}
+          <span className="text-gray-400 text-sm font-medium pb-1">Mauá</span>
+          {/* Linha separadora horizontal */}
+          <div className="w-full border-b border-zinc-800"></div>
+          {/* Subcabeçalho com ordenação */}
+          <div className="w-row flex gap-2">
+          <DataTableColumnHeader column={column} title="Necessário" />
+          <DataTableColumnHeader column={column} title="Realizado" />  
+          </div>
+        </div>
       ),
       cell: ({ cell }) => formatDate(cell.getValue() as Date),
     },
@@ -216,15 +224,18 @@ export function getColumns({
       accessorKey: "benassi",
       header: ({ column }) => (
         <div className="flex flex-col items-center justify-ceter border-r border-zinc-800">
-        {/* Cabeçalho principal */}
-       <span className="text-gray-400 text-sm font-medium pb-1"> 
-       Benassi
-       </span> 
-        {/* Linha separadora horizontal */}
-       <div className="w-full border-b border-zinc-800"></div>
-       {/* Subcabeçalho com ordenação */}
-     <DataTableColumnHeader column={column} title="Realizados" />
-     </div>
+          {/* Cabeçalho principal */}
+          <span className="text-gray-400 text-sm font-medium pb-1">
+            Benassi
+          </span>
+          {/* Linha separadora horizontal */}
+          <div className="w-full border-b border-zinc-800"></div>
+          {/* Subcabeçalho com ordenação */}
+          <div className="w-row flex gap-2">
+          <DataTableColumnHeader column={column} title="Realizados" />
+          <DataTableColumnHeader column={column} title="Realizados" />
+          </div>
+        </div>
       ),
       cell: ({ cell }) => formatDate(cell.getValue() as Date),
     },
@@ -266,7 +277,7 @@ export function getColumns({
                             loading: "Updating...",
                             success: "Label updated",
                             error: (err) => getErrorMessage(err),
-                          },
+                          }
                         );
                       });
                     }}
