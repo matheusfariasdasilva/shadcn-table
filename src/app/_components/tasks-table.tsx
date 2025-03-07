@@ -26,7 +26,6 @@ import { getColumns } from "./tasks-table-columns";
 import { TasksTableFloatingBar } from "./tasks-table-floating-bar";
 import { TasksTableToolbarActions } from "./tasks-table-toolbar-actions";
 import { UpdateTaskSheet } from "./update-task-sheet";
-import { sampleTasks } from "../_lib/sample-data";
 
 interface TasksTableProps {
   promises: Promise<
@@ -145,10 +144,12 @@ export function TasksTable({ promises }: TasksTableProps) {
     initialState: {
       sorting: [{ id: "createdAt", desc: true }],
       columnPinning: { right: ["actions"] },
+      expanded: {},
     },
     getRowId: (originalRow) => originalRow.id,
     shallow: false,
     clearOnDefault: true,
+    enableExpanding: true,
   });
 
   return (
