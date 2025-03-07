@@ -22,6 +22,33 @@ interface GetColumnsProps {
   >;
 }
 
+function createRegionColumn(
+  key: string,
+  regionName: string
+): ColumnDef<Task> {
+  return {
+    accessorKey: key,
+    header: ({ column }) => (
+      <div className="flex flex-col items-center justify-center border-r border-zinc-800">
+        <span className="text-gray-400 text-sm font-medium pb-1">{regionName}</span>
+        <div className="w-full border-b border-zinc-800"></div>
+        <div className="w-row flex gap-2">
+          <DataTableColumnHeader column={column} title="Necessário" />
+          <DataTableColumnHeader column={column} title="Realizado" />
+        </div>
+      </div>
+    ),
+    cell: () => (
+      <div className="flex space-x-2 border-r border-gray-300 px-2">
+        <div className="grid grid-cols-2 w-full gap-2">
+          <div className="text-center">-</div>
+          <div className="text-center">22.942.970</div>
+        </div>
+      </div>
+    ),
+  };
+}
+
 export function getColumns({
   setRowAction,
 }: GetColumnsProps): ColumnDef<Task>[] {
@@ -44,148 +71,12 @@ export function getColumns({
       enableSorting: false,
       enableHiding: false,
     },
-    {
-      accessorKey: "title",
-      header: ({ column }) => (
-        <div className="flex flex-col items-center justify-center border-r border-zinc-800">
-          <span className="text-gray-400 text-sm font-medium pb-1">
-            Anhanguera
-          </span>
-          <div className="w-full border-b border-zinc-800"></div>
-          <div className="w-row flex gap-2">
-            <DataTableColumnHeader column={column} title="Necessário" />
-            <DataTableColumnHeader column={column} title="Realizado" />
-          </div>
-        </div>
-      ),
-      cell: ({ row }) => {
-        return (
-          <div className="flex space-x-2 border-r border-gray-300 px-2">
-            <div className="grid grid-cols-2 w-full gap-2">
-              <div className="text-center">-</div>
-              <div className="text-center">12.237.394</div>
-            </div>
-          </div>
-        );
-      },
-    },
-    {
-      accessorKey: "status",
-      header: ({ column }) => (
-        <div className="flex flex-col items-center justify-center border-r border-zinc-800">
-          <span className="text-gray-400 text-sm font-medium pb-1">Jales</span>
-          <div className="w-full border-b border-zinc-800"></div>
-          <div className="w-row flex gap-2">
-            <DataTableColumnHeader column={column} title="Necessário" />
-            <DataTableColumnHeader column={column} title="Realizado" />
-          </div>
-        </div>
-      ),
-      cell: ({ row }) => {
-        return (
-          <div className="flex space-x-2 border-r border-gray-300 px-2">
-            <div className="grid grid-cols-2 w-full gap-2">
-              <div className="text-center">-</div>
-              <div className="text-center">691.359</div>
-            </div>
-          </div>
-        );
-      },
-    },
-    {
-      accessorKey: "priority",
-      header: ({ column }) => (
-        <div className="flex flex-col items-center justify-center border-r border-zinc-800">
-          <span className="text-gray-400 text-sm font-medium pb-1">Ceasa</span>
-          <div className="w-full border-b border-zinc-800"></div>
-          <div className="w-row flex gap-2">
-            <DataTableColumnHeader column={column} title="Necessário" />
-            <DataTableColumnHeader column={column} title="Realizado" />
-          </div>
-        </div>
-      ),
-      cell: ({ row }) => {
-        return (
-          <div className="flex space-x-2 border-r border-gray-300 px-2">
-            <div className="grid grid-cols-2 w-full gap-2">
-              <div className="text-center">-</div>
-              <div className="text-center">3.743.261</div>
-            </div>
-          </div>
-        );
-      },
-    },
-    {
-      accessorKey: "archived",
-      header: ({ column }) => (
-        <div className="flex flex-col items-center justify-center border-r border-zinc-800">
-          <span className="text-gray-400 text-sm font-medium pb-1">Bauru</span>
-          <div className="w-full border-b border-zinc-800"></div>
-          <div className="w-row flex gap-2">
-            <DataTableColumnHeader column={column} title="Necessário" />
-            <DataTableColumnHeader column={column} title="Realizado" />
-          </div>
-        </div>
-      ),
-      cell: ({ row }) => {
-        return (
-          <div className="flex space-x-2 border-r border-gray-300 px-2">
-            <div className="grid grid-cols-2 w-full gap-2">
-              <div className="text-center">-</div>
-              <div className="text-center">-</div>
-            </div>
-          </div>
-        );
-      },
-    },
-    {
-      accessorKey: "createdAt",
-      header: ({ column }) => (
-        <div className="flex flex-col items-center justify-center border-r border-zinc-800">
-          <span className="text-gray-400 text-sm font-medium pb-1">Mauá</span>
-          <div className="w-full border-b border-zinc-800"></div>
-          <div className="w-row flex gap-2">
-            <DataTableColumnHeader column={column} title="Necessário" />
-            <DataTableColumnHeader column={column} title="Realizado" />
-          </div>
-        </div>
-      ),
-      cell: ({ row }) => {
-        return (
-          <div className="flex space-x-2 border-r border-gray-300 px-2">
-            <div className="grid grid-cols-2 w-full gap-2">
-              <div className="text-center">-</div>
-              <div className="text-center">6.270.957</div>
-            </div>
-          </div>
-        );
-      },
-    },
-    {
-      accessorKey: "benassi",
-      header: ({ column }) => (
-        <div className="flex flex-col items-center justify-center border-r border-zinc-800">
-          <span className="text-gray-400 text-sm font-medium pb-1">
-            Benassi
-          </span>
-          <div className="w-full border-b border-zinc-800"></div>
-          <div className="w-row flex gap-2">
-            <DataTableColumnHeader column={column} title="Necessário" />
-            <DataTableColumnHeader column={column} title="Realizado" />
-          </div>
-        </div>
-      ),
-      cell: ({ row }) => {
-        return (
-          <div className="flex space-x-2 border-r border-gray-300 px-2">
-            <div className="grid grid-cols-2 w-full gap-2">
-              <div className="text-center">-</div>
-              <div className="text-center">22.942.970</div>
-            </div>
-          </div>
-        );
-      },
-    },
+    createRegionColumn("title", "Anhanguera"),
+    createRegionColumn("status", "Jales"),
+    createRegionColumn("priority", "Ceasa"),
+    createRegionColumn("archived", "Bauru"),
+    createRegionColumn("createdAt", "Mauá"),
+    createRegionColumn("benassi", "Benassi"),
     {
       id: "actions",
       cell: function Cell({ row }) {
